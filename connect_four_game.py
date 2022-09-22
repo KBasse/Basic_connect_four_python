@@ -25,6 +25,7 @@ def print_board(my_board):
     return None
 
 def make_move(my_board, symbol, column):
+    #Check to see if the select move is vaild. If not, return a message and re-prompt. If move is valid, implment the change to game board.
     if (column not in range(0, len(my_board))):
         print('The selected column does not exist. Please select a column number between ' + str(0) + ' and ' + str(len(my_board)-1) + '.')
         return my_board, False
@@ -33,6 +34,7 @@ def make_move(my_board, symbol, column):
           return my_board, False
     else:
           for row in range(len(my_board[0])-1, -1, -1):
+              #Starting with the row, check each row for an empty slot until one is found, set that entry to symbol and break out of the loop to prevent multiple entries from being added.
               if (my_board[column][row] == ' '):
                   my_board[column][row] = symbol
                   break
@@ -65,21 +67,23 @@ def has_won(symbol, board):
     return False
 
 def no_valid_moves(board):
+    #Check if all columns are filled.
     if all(board[i][0] != ' ' for i in range(len(board))):
         return True
     else:
         return False 
 
 def game_over(symbol, board):
+    #Check if either the board has been filled or a winner has been found.
     if (has_won(symbol, board) or no_valid_moves(board)):
         return True
     else:
         return False
 
 
-my_board = make_board()
+my_board = make_board() #Create an empty board.
 
-#print_board(my_board)
+print_board(my_board) #Print to board for visual reference.
 symbol = 'X'
 turn = 1 
 while (not game_over(symbol, my_board)):
@@ -90,9 +94,9 @@ while (not game_over(symbol, my_board)):
 
     if (turn % 2 == 1):
         symbol = 'X'
-        column = int(input("It is X's turn. Please select a column in which to place piece."))
-        my_board, move_made = make_move(my_board, symbol, column)
-        print_board(my_board)
+        column = int(input("It is X's turn. Please select a column in which to place piece.")) #Ask for interger input from the terminal.
+        my_board, move_made = make_move(my_board, symbol, column) #Make the desired move is allowed and update the move_made variable to progress to next turn.
+        print_board(my_board) #Print the updated game board.
 
         if (has_won(symbol,my_board)):
             print("Winner!")
@@ -104,9 +108,9 @@ while (not game_over(symbol, my_board)):
     
     if (turn % 2 == 0):
         symbol = 'O'
-        column = int(input("It is O's turn. Please select a column in which to place piece."))
-        my_board, move_made = make_move(my_board, symbol, column)
-        print_board(my_board)
+        column = int(input("It is O's turn. Please select a column in which to place piece.")) #Ask for interger input from the terminal.
+        my_board, move_made = make_move(my_board, symbol, column) #Make the desired move is allowed and update the move_made variable to progress to next turn.
+        print_board(my_board) #Print the updated game board.
 
         if (has_won(symbol,my_board)):
             print("Winner!")
