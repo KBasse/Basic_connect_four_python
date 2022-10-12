@@ -25,7 +25,7 @@ def print_board(my_board):
     return None
 
 def make_move(my_board, symbol, column):
-    #Check to see if the select move is vaild. If not, return a message and re-prompt. If move is valid, implment the change to game board.
+    #Check to see if the selected move is vaild. If not, return a message and re-prompt. If move is valid, implment the change to game board.
     if (column not in range(0, len(my_board))):
         print('The selected column does not exist. Please select a column number between ' + str(0) + ' and ' + str(len(my_board)-1) + '.')
         return my_board, False
@@ -34,7 +34,7 @@ def make_move(my_board, symbol, column):
           return my_board, False
     else:
           for row in range(len(my_board[0])-1, -1, -1):
-              #Starting with the row, check each row for an empty slot until one is found, set that entry to symbol and break out of the loop to prevent multiple entries from being added.
+              #Starting with the bottom row, check each row for an empty slot until one is found, set that entry to symbol and break out of the loop to prevent multiple entries from being added.
               if (my_board[column][row] == ' '):
                   my_board[column][row] = symbol
                   break
