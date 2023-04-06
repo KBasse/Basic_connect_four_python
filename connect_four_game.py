@@ -25,7 +25,7 @@ def print_board(my_board):
     return None
 
 def make_move(my_board, symbol, column):
-    #Check to see if the selected move is vaild. If not, return a message and re-prompt. If move is valid, implment the change to game board.
+    #Check to see if the selected move is valid. If not, return a message and re-prompt. If move is valid, implment the change to game board.
     if (column not in range(0, len(my_board))):
         print('The selected column does not exist. Please select a column number between ' + str(0) + ' and ' + str(len(my_board)-1) + '.')
         return my_board, False
